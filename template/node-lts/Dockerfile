@@ -24,7 +24,8 @@ WORKDIR /home/app
 COPY package.json ./
 
 # This ordering means the npm installation is cached for the outer function handler.
-RUN npm i --production
+RUN npm config set registry https://mirrors.tencent.com/npm/ \
+    && npm i --production
 
 # Copy outer function handler
 COPY index.js ./
