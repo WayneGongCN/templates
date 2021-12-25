@@ -35,7 +35,8 @@ COPY index.js ./
 WORKDIR /home/app/function
 COPY --chown=app:app function/*.json ./
 
-RUN npm i --production
+RUN npm config set registry https://mirrors.tencent.com/npm/ \
+    && npm i --production
 
 # COPY function files and folders
 COPY function/ ./
